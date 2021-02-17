@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 import time
+import pyautogui
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
@@ -38,8 +39,26 @@ def open_browser():
     enter_button.click()
 
     # close browser
+    time.sleep(2)
+    open_alfaview()
+
     time.sleep(5)
     driver.quit()
+
+
+def open_alfaview():
+    print("opening alfaview")
+    pyautogui.click(760, 1325)
+    time.sleep(1)
+    pyautogui.click(2876, 1649)
+    time.sleep(1)
+    pyautogui.click(2887, 1780)
+
+def close_alfaview():
+    print("closing alfaview")
+    pyautogui.click(3824, 1098)
+
+
 
 
 def main():

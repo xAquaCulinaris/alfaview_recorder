@@ -37,5 +37,3 @@ def record_audio(RECORD_SECONDS):
     wf.setframerate(RATE)
     wf.writeframes(b''.join(frames))
     wf.close()
-
-#record_audio(10)

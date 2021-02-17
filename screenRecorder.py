@@ -4,9 +4,6 @@ import os
 import pyautogui
 import time
 
-
-
-
 duration = 10
 output = "raw.avi"
 converted = "video.avi"
@@ -53,19 +50,3 @@ def convert_video(multiplier):
     out.release()
     cv2.destroyAllWindows()
     print("Finished conversion..")
-
-
-
-
-# start_time = time.perf_counter()
-# end_time = start_time + duration
-# frames = capture_video(end_time)
-#
-#
-# sec = end_time-start_time
-# multiplier = frames/sec
-#
-# print("sec " + str(sec))
-# print("multiplier " + str(multiplier))
-#
-# convert_video(multiplier)
