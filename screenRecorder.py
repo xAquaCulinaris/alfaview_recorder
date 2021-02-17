@@ -57,15 +57,15 @@ def convert_video(multiplier):
 
 
 
-start_time = time.perf_counter()
-end_time = start_time + duration
-frames = capture_video(end_time)
-
-
-sec = end_time-start_time
-multiplier = frames/sec
-
-print("sec " + str(sec))
-print("multiplier " + str(multiplier))
-
-convert_video(multiplier)
+# start_time = time.perf_counter()
+# end_time = start_time + duration
+# frames = capture_video(end_time)
+#
+#
+# sec = end_time-start_time
+# multiplier = frames/sec
+#
+# print("sec " + str(sec))
+# print("multiplier " + str(multiplier))
+#
+# convert_video(multiplier)
