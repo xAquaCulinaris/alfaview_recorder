@@ -30,20 +30,14 @@ def audio_thread():
     record_audio(duration)
 
 def delete_files():
-    if os.path.exists('raw.avi'):
-        os.remove('raw.avi')
-    else:
-        print('raw.avi does not exists')
+    to_delete = ['raw.avi', 'video.avi', 'output.wav', 'screenshot1.png', 'screenshot2.png', 'screenshot3.png']
 
-    if os.path.exists('video.avi'):
-        os.remove('video.avi')
-    else:
-        print('video.avi does not exists')
-
-    if os.path.exists('output.wav'):
-        os.remove('output.wav')
-    else:
-        print('output.wav does not exists')
+    for file in to_delete:
+        if os.path.exists(file):
+            os.remove(file )
+            print(file + ' has been removed')
+        else:
+            print(file + ' does not exists')
 
 
 def main():

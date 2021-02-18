@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 import time
 import pyautogui
+import cv2
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from image_recognition import find_button
 
 # ------Config---------
 displayName = 'Marian Stucke'
@@ -48,11 +50,33 @@ def open_browser():
 
 def open_alfaview():
     print("opening alfaview")
-    pyautogui.click(760, 1325)
+
+    open_button = cv2.imread('buttons_to_find/open_button.png')
+    skip_update_button = cv2.imread('buttons_to_find/skip_update_button.png')
+    join_rooom_button = cv2.imread('buttons_to_find/join_room_button.png')
+
+
+
+
+    pyautogui.screenshot("screenshot1.png")
+    screenshot1 = cv2.imread('screenshot1.png')
+    cord1 = find_button(screenshot1, open_button, 'result1.png')
+    pyautogui.click(cord1[0], cord1[1])
     time.sleep(1)
-    pyautogui.click(2876, 1649)
+
+    pyautogui.screenshot("screenshot2.png")
+    screenshot2 = cv2.imread('screenshot2.png')
+    cord2 = find_button(screenshot2, skip_update_button, 'result2.png')
+    pyautogui.click(cord2[0], cord2[1])
     time.sleep(1)
-    pyautogui.click(2887, 1780)
+
+    pyautogui.screenshot("screenshot3.png")
+    screenshot3 = cv2.imread('screenshot3.png')
+    cord3 = find_button(screenshot3, join_rooom_button, 'result3.png')
+    pyautogui.click(cord3[0], cord3[1])
+    time.sleep(1)
+
+
 
 def close_alfaview():
     print("closing alfaview")
