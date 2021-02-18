@@ -20,8 +20,6 @@ def video_thread():
     sec = end_time-start_time
     multiplier = frames/sec
 
-    print("sec " + str(sec))
-    print("multiplier " + str(multiplier))
 
     convert_video(multiplier)
 

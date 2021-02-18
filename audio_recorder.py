@@ -17,7 +17,7 @@ def record_audio(RECORD_SECONDS):
                     input=True,
                     frames_per_buffer=CHUNK)
 
-    print("* recording")
+    print('Starting audio capturing..')
 
     frames = []
 
@@ -25,7 +25,7 @@ def record_audio(RECORD_SECONDS):
         data = stream.read(CHUNK)
         frames.append(data)
 
-    print("* done recording")
+    print("Finished audio caputuring..")
 
     stream.stop_stream()
     stream.close()

@@ -13,6 +13,7 @@ roomNumber = 2
 
 
 def open_browser():
+    print('Opening browser..')
     driver = webdriver.Chrome('/home/marian/Programming/alfaview/chromedriver')
     driver.get('https://app.alfaview.com/#/join/hochschule-furtwangen-furtwangen-university/5fa8632d-b4d7-44c4-9b1b-c88960333589/7200232b-a57a-46dc-9436-ffa1f61a3d00')
 
@@ -40,12 +41,16 @@ def open_browser():
     enter_button = driver.find_element_by_xpath("/html/body/div[@id='app']/div[@class='v-dialog__content v-dialog__content--active']/div[@class='v-dialog v-dialog--active']/div[@class='av-panel-wrapper']/div[@class='av-panel radius-large']/div[@class='av-panel__content']/div[@class='px-5 pt-4 av-guest-join__dialog-bottom-padding text-xs-center']/div[@class='px-3']/a[@class='button-min-width-x-large mt-4 v-btn v-btn--depressed v-btn--round theme--light av-button av-button--primary']")
     enter_button.click()
 
-    # close browser
+    print('Opened browser..')
+
     time.sleep(2)
     open_alfaview()
 
+    # close browser
     time.sleep(5)
     driver.quit()
+
+
 
 
 def open_alfaview():
@@ -76,10 +81,12 @@ def open_alfaview():
     pyautogui.click(cord3[0], cord3[1])
     time.sleep(1)
 
+    print('Opened alfaview..')
+
 
 
 def close_alfaview():
-    print("closing alfaview")
+    print("Closing alfaview..")
     pyautogui.click(3824, 1098)
 
 
