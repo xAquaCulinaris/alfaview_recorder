@@ -44,12 +44,14 @@ def main():
     t1 = threading.Thread(target=video_thread)
     t2 = threading.Thread(target=audio_thread)
     t1.start()
-    t2.start()
+    #t2.start()
 
     t1.join()
-    t2.join()
+    #t2.join()
 
-    combine_audio('video.avi', 'output.wav', 'video.mp4')
+
+
+    combine_audio('video.avi', 'output.wav')
     delete_files()
 
     close_alfaview()

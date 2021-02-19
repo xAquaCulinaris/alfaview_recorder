@@ -5,16 +5,20 @@ import cv2
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from image_recognition import find_button
+from config_parser import get_config_string
+from config_parser import get_config_bool
 
 # ------Config---------
-displayName = 'Marian Stucke'
+displayName = get_config_string('DEFAULT', 'username')
+driverPath = get_config_string('DEFAULT', 'chromedriverPath')
 roomNumber = 2
 # --------------------
 
 
 def open_browser():
     print('Opening browser..')
-    driver = webdriver.Chrome('/home/marian/Programming/alfaview/chromedriver')
+    #add to configureaition!!!!!!!!!!!!!!!!!!!!!!!!!!
+    driver = webdriver.Chrome(driverPath)
     driver.get('https://app.alfaview.com/#/join/hochschule-furtwangen-furtwangen-university/5fa8632d-b4d7-44c4-9b1b-c88960333589/7200232b-a57a-46dc-9436-ffa1f61a3d00')
 
     time.sleep(2)
@@ -56,28 +60,30 @@ def open_browser():
 def open_alfaview():
     print("opening alfaview")
 
-    open_button = cv2.imread('buttons_to_find/open_button.png')
-    skip_update_button = cv2.imread('buttons_to_find/skip_update_button.png')
-    join_rooom_button = cv2.imread('buttons_to_find/join_room_button.png')
+    click_skip_update = get_config_bool('Alfaview', 'alfaviewSkipUpdate')
+    open_button = cv2.imread(get_config_string('Buttons','open_alfaview_button'))
+    skip_update_button = cv2.imread(get_config_string('Buttons', 'skip_update_button'))
+    join_rooom_button = cv2.imread(get_config_string('Buttons', 'join_room_button'))
 
 
 
 
     pyautogui.screenshot("screenshot1.png")
     screenshot1 = cv2.imread('screenshot1.png')
-    cord1 = find_button(screenshot1, open_button, 'result1.png')
+    cord1 = find_button(screenshot1, open_button)
     pyautogui.click(cord1[0], cord1[1])
     time.sleep(1)
 
-    pyautogui.screenshot("screenshot2.png")
-    screenshot2 = cv2.imread('screenshot2.png')
-    cord2 = find_button(screenshot2, skip_update_button, 'result2.png')
-    pyautogui.click(cord2[0], cord2[1])
-    time.sleep(1)
+    if(click_skip_update):
+        pyautogui.screenshot("screenshot2.png")
+        screenshot2 = cv2.imread('screenshot2.png')
+        cord2 = find_button(screenshot2, skip_update_button)
+        pyautogui.click(cord2[0], cord2[1])
+        time.sleep(1)
 
     pyautogui.screenshot("screenshot3.png")
     screenshot3 = cv2.imread('screenshot3.png')
-    cord3 = find_button(screenshot3, join_rooom_button, 'result3.png')
+    cord3 = find_button(screenshot3, join_rooom_button)
     pyautogui.click(cord3[0], cord3[1])
     time.sleep(1)
 
@@ -87,7 +93,8 @@ def open_alfaview():
 
 def close_alfaview():
     print("Closing alfaview..")
-    pyautogui.click(3824, 1098)
+    #needs to be dynamic
+    pyautogui.click(1905, 5)
 
 
 
