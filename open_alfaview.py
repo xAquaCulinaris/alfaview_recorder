@@ -11,15 +11,15 @@ from config_parser import get_config_bool
 # ------Config---------
 displayName = get_config_string('DEFAULT', 'username')
 driverPath = get_config_string('DEFAULT', 'chromedriverPath')
-roomNumber = 2
+room_number = get_config_string('DEFAULT', 'room')
+room_link = get_config_string('rooms', room_number)
 # --------------------
 
 
 def open_browser():
     print('Opening browser..')
-    #add to configureaition!!!!!!!!!!!!!!!!!!!!!!!!!!
     driver = webdriver.Chrome(driverPath)
-    driver.get('https://app.alfaview.com/#/join/hochschule-furtwangen-furtwangen-university/5fa8632d-b4d7-44c4-9b1b-c88960333589/7200232b-a57a-46dc-9436-ffa1f61a3d00')
+    driver.get(room_link)
 
     time.sleep(2)
 
@@ -66,8 +66,6 @@ def open_alfaview():
     join_rooom_button = cv2.imread(get_config_string('Buttons', 'join_room_button'))
 
 
-
-
     pyautogui.screenshot("screenshot1.png")
     screenshot1 = cv2.imread('screenshot1.png')
     cord1 = find_button(screenshot1, open_button)
@@ -88,14 +86,6 @@ def open_alfaview():
     time.sleep(1)
 
     print('Opened alfaview..')
-
-
-
-def close_alfaview():
-    print("Closing alfaview..")
-    #needs to be dynamic
-    pyautogui.click(1905, 5)
-
 
 
 

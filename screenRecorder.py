@@ -3,18 +3,20 @@ import numpy as np
 import os
 import pyautogui
 import time
-
+from config_parser import get_config_double
 duration = 10
 output = "raw.avi"
 converted = "video.avi"
 
-left = 1920
-top = 1080
-width = 1920
-height = 1080
+
+#width = get_config_double('Alfaview', 'alfaviewWidth')
+#height = get_config_double('Alfaview', 'alfaviewHeight')
+#left = (get_config_double('DEFAULT', 'screenWidth') - width)
+#top = (get_config_double('DEFAULT', 'screenHeight') - height )
 
 
-def capture_video(end_time):
+
+def capture_video(end_time, top,left, width, height):
     print("Starting capturing..")
     # Define the codec and create VideoWriter object
     codec = cv2.VideoWriter_fourcc(*'mp4v')
@@ -33,7 +35,7 @@ def capture_video(end_time):
     return frames
 
 
-def convert_video(multiplier):
+def convert_video(multiplier, width, height):
     print("Starting conversion..")
     cap = cv2.VideoCapture(output)
     codec = cv2.VideoWriter_fourcc(*'XVID')
