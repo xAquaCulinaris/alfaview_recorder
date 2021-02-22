@@ -2,7 +2,8 @@
 import threading
 import time
 import os
-from screenRecorder import capture_video
+from screen_recorder import screen_recorder
+#from screenRecorder import capture_video
 from screenRecorder import convert_video
 from audio_recorder import record_audio
 from combine_files import combine_audio
@@ -15,7 +16,7 @@ duration = 10
 def video_thread(window_dimensions):
     start_time = time.perf_counter()
     end_time = start_time + duration
-    frames = capture_video(end_time, window_dimensions[0], window_dimensions[1], window_dimensions[2], window_dimensions[3])
+    frames = screen_recorder(end_time, window_dimensions[0], window_dimensions[1], window_dimensions[2], window_dimensions[3])
 
 
     sec = end_time-start_time
