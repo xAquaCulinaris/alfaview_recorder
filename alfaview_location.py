@@ -1,5 +1,5 @@
 from ewmh import EWMH
-import time
+
 ewmh = EWMH()
 
 def get_alfaview_location():
@@ -8,4 +8,6 @@ def get_alfaview_location():
     y = alfaview_geometry.y
     width = alfaview_geometry.width
     height = alfaview_geometry.height
-    return(x,y,width,height)
+    print("Alfaview window: x=" + str(x) + " y=" + str(y) + " w=" + str(width) + " h=" + str(height))
+
+    return(y,x,width,height)

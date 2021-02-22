@@ -28,4 +28,4 @@ def get_config_bool(section, name):
     return bool(config[section][name])
 
 
-write_config()
+#write_config()

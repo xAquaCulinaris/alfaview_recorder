@@ -29,7 +29,7 @@ def audio_thread():
     record_audio(duration)
 
 def delete_files():
-    to_delete = ['raw.avi', 'video.avi', 'screenshot1.png', 'screenshot2.png', 'screenshot3.png'] #, 'output.wav']
+    to_delete = ['raw.avi', 'video.avi', 'screenshot1.png', 'screenshot2.png', 'screenshot3.png', 'output.wav']
 
     for file in to_delete:
         if os.path.exists(file):
