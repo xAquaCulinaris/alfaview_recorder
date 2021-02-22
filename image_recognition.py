@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-import pyautogui
 
 def find_button(screenshot, button_to_find):
     print('Searching for button..')

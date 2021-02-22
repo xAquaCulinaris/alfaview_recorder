@@ -9,13 +9,6 @@ output = "raw.avi"
 converted = "video.avi"
 
 
-#width = get_config_double('Alfaview', 'alfaviewWidth')
-#height = get_config_double('Alfaview', 'alfaviewHeight')
-#left = (get_config_double('DEFAULT', 'screenWidth') - width)
-#top = (get_config_double('DEFAULT', 'screenHeight') - height )
-
-
-
 def capture_video(end_time, top,left, width, height):
     print("Starting capturing..")
     # Define the codec and create VideoWriter object

@@ -9,9 +9,9 @@ from config_parser import get_config_string
 from config_parser import get_config_bool
 
 # ------Config---------
-displayName = get_config_string('DEFAULT', 'username')
+displayName = get_config_string('Alfaview', 'username')
 driverPath = get_config_string('DEFAULT', 'chromedriverPath')
-room_number = get_config_string('DEFAULT', 'room')
+room_number = get_config_string('Alfaview', 'room')
 room_link = get_config_string('rooms', room_number)
 # --------------------
 
