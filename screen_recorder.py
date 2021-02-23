@@ -2,17 +2,11 @@ from mss.linux import MSS as mss
 from PIL import Image
 import cv2
 import numpy as np
-from config_parser import get_config_double
 import time
 
-
-duration = 10.0
 output = "raw.avi"
-converted = "video.avi"
 
-
-
-def screen_recorder(end_time, top,left, width, height):
+def screen_recorder(duration, end_time, top,left, width, height):
     print("Starting recording")
     monitor = {"top": top, "left": left, "width": width, "height": height}
     codec = cv2.VideoWriter_fourcc(*'mp4v')

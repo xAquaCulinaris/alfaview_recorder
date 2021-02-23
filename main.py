@@ -3,27 +3,27 @@ import threading
 import time
 import os
 from screen_recorder import screen_recorder
-#from screenRecorder import capture_video
-from screenRecorder import convert_video
+from video_converter import convert_video
 from audio_recorder import record_audio
 from combine_files import combine_audio
 from open_alfaview import open_browser
 from close_alfaview import close_alfaview
 from alfaview_location import get_alfaview_location
+from config_parser import get_config_double
 
-duration = 10
+duration = get_config_double('DEFAULT', 'recording_duration')
 
 def video_thread(window_dimensions):
     start_time = time.perf_counter()
     end_time = start_time + duration
-    frames = screen_recorder(end_time, window_dimensions[0], window_dimensions[1], window_dimensions[2], window_dimensions[3])
+    frames = screen_recorder(duration, end_time, window_dimensions[0], window_dimensions[1], window_dimensions[2]-2, window_dimensions[3]-2)
 
 
     sec = end_time-start_time
     multiplier = frames/sec
 
 
-    convert_video(multiplier, window_dimensions[2], window_dimensions[3])
+    convert_video(multiplier, window_dimensions[2]-2, window_dimensions[3]-2)
 
 
 def audio_thread():
@@ -42,16 +42,8 @@ def delete_files():
 
 def main():
     open_browser()
+    #TODO: wait for alfaview to really open
     window_dimensions = get_alfaview_location()
-    top = window_dimensions[0]
-    left = window_dimensions[1]
-    width = window_dimensions[2]
-    height = window_dimensions[3]
-    print("top" + str(top))
-    print("left" + str(left))
-    print("width" + str(width))
-    print("heigth" + str(height))
-
 
     t1 = threading.Thread(target=video_thread, args=[window_dimensions])
     t2 = threading.Thread(target=audio_thread)
@@ -60,7 +52,6 @@ def main():
 
     t1.join()
     t2.join()
-
 
 
     combine_audio('video.avi', 'output.wav')
