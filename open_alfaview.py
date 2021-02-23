@@ -7,6 +7,7 @@ from selenium.webdriver.common.keys import Keys
 from image_recognition import find_button
 from config_parser import get_config_string
 from config_parser import get_config_bool
+from check_alfaview import alfaview_is_opened
 
 # ------Config---------
 displayName = get_config_string('Alfaview', 'username')
@@ -71,6 +72,10 @@ def open_alfaview():
     cord1 = find_button(screenshot1, open_button)
     pyautogui.click(cord1[0], cord1[1])
     time.sleep(1)
+
+    while(not alfaview_is_opened('alfaview')):
+        print('waiting for alfaview to open')
+        time.sleep(0.2)
 
     if(click_skip_update):
         pyautogui.screenshot("screenshot2.png")
